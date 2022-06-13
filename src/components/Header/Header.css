@@ -3,11 +3,11 @@
   cursor: pointer;
   position: fixed;
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
   text-transform: uppercase;
   background-color: #39445a;
   font-family: "Montserrat", sans-serif;
-  font-size: 5vw;
+  font-size: 4vw;
   padding-bottom: 15px;
   box-shadow: 0px 1px 5px black;
   color: white;
@@ -17,6 +17,8 @@
 @media (max-width: 1000px) {
   .header {
     padding-top: 15px;
-    font-size: 6.4vw;
+    font-size: 3.4vw;
   }
 }
+
+

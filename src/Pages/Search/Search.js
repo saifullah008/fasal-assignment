@@ -28,12 +28,12 @@ const Search = () => {
       },
     },
   });
-
+  const apiKey='45cd5db7eb395f57b04103c70a29baad';
   const fetchSearch = async () => {
     try {
       const { data } = await axios.get(
         `https://api.themoviedb.org/3/search/${type ? "tv" : "movie"}?api_key=${
-          process.env.REACT_APP_API_KEY
+          apiKey
         }&language=en-US&query=${searchText}&page=${page}&include_adult=false`
       );
       setContent(data.results);
@@ -81,7 +81,7 @@ const Search = () => {
           aria-label="disabled tabs example"
         >
           <Tab style={{ width: "50%" }} label="Search Movies" />
-          <Tab style={{ width: "50%" }} label="Search TV Series" />
+          
         </Tabs>
       </ThemeProvider>
       <div className="trending">

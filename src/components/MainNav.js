@@ -2,11 +2,11 @@ import React, { useEffect } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import BottomNavigation from "@material-ui/core/BottomNavigation";
 import BottomNavigationAction from "@material-ui/core/BottomNavigationAction";
-import TvIcon from "@material-ui/icons/Tv";
 import MovieIcon from "@material-ui/icons/Movie";
 import SearchIcon from "@material-ui/icons/Search";
 import WhatshotIcon from "@material-ui/icons/Whatshot";
-import { useHistory } from "react-router-dom";
+import FeaturedPlayListIcon from '@material-ui/icons/FeaturedPlayList';
+import {useNavigate } from "react-router-dom";
 
 const useStyles = makeStyles({
   root: {
@@ -21,20 +21,21 @@ const useStyles = makeStyles({
 export default function SimpleBottomNavigation() {
   const classes = useStyles();
   const [value, setValue] = React.useState(0);
-  const history = useHistory();
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (value === 0) {
-      history.push("/");
+      navigate("/");
     } else if (value === 1) {
-      history.push("/movies");
+      navigate("/movies");
     } else if (value === 2) {
-      history.push("/series");
+      navigate("/playlist");
     } else if (value === 3) {
-      history.push("/search");
+      navigate("/search");
     }
-  }, [value, history]);
+  }, [value]);
 
+  if (localStorage.getItem("currentUser")){
   return (
     <BottomNavigation
       value={value}
@@ -56,14 +57,20 @@ export default function SimpleBottomNavigation() {
       />
       <BottomNavigationAction
         style={{ color: "white" }}
-        label="TV Series"
-        icon={<TvIcon />}
+        label="PlayList"
+        icon={< FeaturedPlayListIcon/>}
       />
       <BottomNavigationAction
         style={{ color: "white" }}
         label="Search"
         icon={<SearchIcon />}
       />
+      <BottomNavigationAction
+        style={{ color: "white" }}
+      />
     </BottomNavigation>
   );
+    }
+    else
+    return <div></div>
 }

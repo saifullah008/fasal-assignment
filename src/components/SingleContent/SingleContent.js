@@ -11,6 +11,10 @@ const SingleContent = ({
   media_type,
   vote_average,
 }) => {
+
+  function truncate(str, n) {
+    return str?.length > n ? str.substr(0, n - 1) + "..." : str;
+  }
   return (
     <ContentModal media_type={media_type} id={id}>
       <Badge
@@ -22,11 +26,11 @@ const SingleContent = ({
         src={poster ? `${img_300}${poster}` : unavailable}
         alt={title}
       />
-      <b className="title">{title}</b>
-      <span className="subTitle">
+      <b className="title">{truncate(title,15)}</b>
+      {/* <span className="subTitle">
         {media_type === "tv" ? "TV Series" : "Movie"}
         <span className="subTitle">{date}</span>
-      </span>
+      </span> */}
     </ContentModal>
   );
 };
